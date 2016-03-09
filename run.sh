@@ -18,4 +18,6 @@ docker run \
         -v $DATA_DIR:/opt/geoserver/data_dir \
 	-p 8080:8080 \
 	-d \
-	-t kartoza/geoserver
+	-e "JAVA_OPTS=-Xms2048m -Xmx2048m -XX:MaxPermSize=128m -server -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:+UseParallelGC" \
+	-t kartoza/geoserver \
+	/usr/local/bin/startup.sh
