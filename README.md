@@ -66,8 +66,10 @@ container do:
 
 ```
 sudo docker run --name "postgis" -d -t kartoza/postgis
-sudo docker run --name "geoserver"  --link postgis:postgis -p 8080:8080 -d -t kartoza/geoserver
+sudo docker run --name "geoserver"  --link postgis:postgis -p 8080:8080 -d -t kartoza/geoserver /usr/local/bin/startup.sh
 ```
+
+You can set JAVA_OPTS by including something like this: `-e "JAVA_OPTS=-Xms2048m -Xmx2048m -XX:MaxPermSize=128m -server -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:+UseParallelGC" \`
 
 You can also use the following environment variables to pass a 
 user name and password. To postgis:
